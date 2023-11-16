@@ -1,63 +1,40 @@
 #include <iostream>
+#include <string>
+#include <cstdio>
 #include <vector>
+#include <queue>
 #include <algorithm>
+#include <map>
+
+
+#define loop(i, to) for (int i = 0; i < to; ++i)
+#define cont(i, to) for (int i = 1; i<=to; ++i)
+#define circ(i, fm, to) for (int i = fm; i <=to; ++i)
+#define foreach(i, dat) for (__typeof(dat.begin()) i = dat.begin(); i != dat.end();++i)
+
+typedef long long num;
 
 using namespace std;
 
-const int nsz = 200;
+const int nsz =;
 
-int n, k;
-int dp[nsz][nsz][2];
+
 
 void inline init() {
-    for (int i = 0; i < nsz; ++i) {
-        for (int j = 0; j < nsz; ++j) {
-            for (int l = 0; l < 2; ++l) {
-                dp[i][j][l] = -1;
-            }
-        }
-    }
+
+
+
+
 }
 
-int inline narrow_art_gallery(vector<vector<int> > &values, int row, int to_close, int closed_last) {
-    if (row == n) {
-        return 0;
-    }
-
-    if (dp[row][to_close][closed_last] != -1) {
-        return dp[row][to_close][closed_last];
-    }
-
-    int result = narrow_art_gallery(values, row + 1, to_close, 0) + values[row][0];
-
-    if (to_close > 0) {
-        if (closed_last == 0) {
-            result = max(result, narrow_art_gallery(values, row + 1, to_close - 1, 1) + values[row][1]);
-        }
-    }
-
-    dp[row][to_close][closed_last] = result;
-    return result;
+void inline upd(int &a, int b) {
+    if (a < b) a = b;
 }
 
 int main() {
-    while (true) {
-        cin >> n >> k;
-        if (n == 0 && k == 0) {
-            break;
-        }
 
-        vector<vector<int> >  values(n, vector<int>(2));
 
-        for (int i = 0; i < n; ++i) {
-            cin >> values[i][0] >> values[i][1];
-        }
 
-        init();
 
-        int result = narrow_art_gallery(values, 0, k, 0);
-        cout << result << endl;
-    }
 
-    return 0;
 }
